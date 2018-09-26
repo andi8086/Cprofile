@@ -4,7 +4,7 @@ define testbinary
 	@./$(1)
 	@echo "---------------------------"
 	@echo "Testing addr2line for $(1)"
-	$(eval REL_ADDR = $(shell ./$(1) | grep -o "rel:\ 0[x][0-9a-f]\+" | cut -d' ' -f2))
+	$(eval REL_ADDR=$(shell ./$(1) | grep -o "rel:\ 0[x][0-9a-f]\+" | cut -d' ' -f2))
 	addr2line -e ./$(1) ${REL_ADDR} -f
 
 endef
